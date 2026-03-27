@@ -163,6 +163,7 @@ Isso evita o SQL injection.
 
 - CRUD ( Create, Read, Update, Delete) 
 - Rotas com Express
+- Metodos? Verbos HTTP
 
 ---
 
