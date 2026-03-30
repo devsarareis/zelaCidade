@@ -3,7 +3,13 @@ const express = require('express') // framework para criar o servidor e lidar co
 
 const { criarBanco } = require('./database') // a chave que vai abrir a conexao com o banco de dados 
 
+const cors = require("cors") // importando o pacote que gerencia as permissões de acesso
+
 const app = express() //lgando o motor do sercidor 
+
+
+
+app.use(cors()) // ativando o CORS no servidor 
 
 app.use(express.json()) // para o servidor entender os dados em formato json
 
@@ -24,12 +30,10 @@ app.get('/', (req, res) => {
 
 })
 
-const PORT = 3000
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando http://localhost:${PORT}`)
-    criarBanco()
-})
+
+
+
 
 // rota de listagem de incidentes
 
@@ -134,4 +138,15 @@ app.delete("/incidentes/:id", async (req, res) => {
 
 })
 
+
+// porta do servidor 
+
+
+// criando uma variavel inteligente para a porta 
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando http://localhost:${PORT}`)
+   
+})
 
